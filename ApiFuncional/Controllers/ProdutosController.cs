@@ -14,7 +14,7 @@ namespace ApiFuncional.Controllers
         {
             _context = context;
         }
-        
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Produto>>> GetProdutos()
         {
@@ -29,6 +29,7 @@ namespace ApiFuncional.Controllers
             return produto;
         }
 
+        [HttpPost]
         public async Task<ActionResult<Produto>> PostProduto(Produto produto)
         {
             _context.Produtos.Add(produto);

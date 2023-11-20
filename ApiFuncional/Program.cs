@@ -1,11 +1,9 @@
 using ApiFuncional.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata.Ecma335;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers(); //habilita api com estrutura controller
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -25,8 +23,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+//Endpoint minimal
 app.MapGet("/weatherforecast", () => "Teste")
 .WithName("GetWeatherForecast")
 .WithOpenApi();
+
+app.UseAuthorization();
+
+app.MapControllers(); //habilita api com estrutura controller
 
 app.Run();
