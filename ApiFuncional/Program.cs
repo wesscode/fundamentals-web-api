@@ -3,7 +3,12 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers(); //habilita api com estrutura controller
+//AddControllers: habilita api com estrutura controller
+builder.Services.AddControllers()
+    .ConfigureApiBehaviorOptions(options => {
+        options.SuppressModelStateInvalidFilter = true; //Ignora as validações do AspNet dataAnnotations
+    });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
