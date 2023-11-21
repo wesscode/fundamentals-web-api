@@ -1,4 +1,5 @@
 using ApiFuncional.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,12 @@ builder.Services.AddDbContext<ApiDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+//IdentityUser: usuário logado(usuario interativo)
+//IdentityRole: perfil do usuário logado.
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddRoles<IdentityRole>() //definindo que o sistema deve usar roles
+                .AddEntityFrameworkStores<ApiDbContext>(); //definindo contexto para o identity
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,6 +39,8 @@ app.UseHttpsRedirection();
 app.MapGet("/weatherforecast", () => "Teste")
 .WithName("GetWeatherForecast")
 .WithOpenApi();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

@@ -3,7 +3,6 @@ using ApiFuncional.Data;
 using ApiFuncional.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
 
 namespace ApiFuncional.Controllers
 {
