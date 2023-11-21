@@ -1,6 +1,6 @@
 namespace ApiFuncional.Models 
 {
-    public class JwtSettigns 
+    public class JwtSettings 
     {
         public string? Segredo { get; set; }
         public int ExpiracaoHoras { get; set; }
