@@ -23,3 +23,5 @@
         - Header: especifica o algoritmo e o tipo. 
         - Payload: informações e **iat** define quando foi emitido.
         - Signature: senha de assinatura do token(segredo).
+
+                * dotnet add package Microsoft.AspNetCore Authentication.JwtBearer               
