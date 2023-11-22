@@ -16,7 +16,7 @@
         $(document).ready(function() {
             $("#fetchData").click(function() {
                 $.ajax({
-                    url: 'https://localhost:5053/api/produtos/2',
+                    url: 'https://localhost:7212/api/produtos/2',
                     type: 'GET',
                     success: function(response) {
                         var htmlContent = `<p>ID: ${response.id}</p>
