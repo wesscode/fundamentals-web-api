@@ -2,6 +2,7 @@ using System.Data;
 using ApiFuncional.Data;
 using ApiFuncional.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,6 +31,7 @@ namespace ApiFuncional.Controllers
         }
 
         [AllowAnonymous]
+        [EnableCors("Production")] //forçando a politica de CORS para esse endpoint
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
