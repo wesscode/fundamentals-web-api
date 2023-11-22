@@ -1,11 +1,13 @@
 using System.Data;
 using ApiFuncional.Data;
 using ApiFuncional.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiFuncional.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/produtos")]
     public class ProdutosController : ControllerBase
@@ -27,6 +29,7 @@ namespace ApiFuncional.Controllers
             return await _context.Produtos.ToListAsync();
         }
 
+        [AllowAnonymous]
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -99,6 +102,7 @@ namespace ApiFuncional.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}:int")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -110,7 +114,7 @@ namespace ApiFuncional.Controllers
             var produto = await _context.Produtos.FindAsync(id);
 
             if (produto == null) return NotFound();
-            
+
             _context.Produtos.Remove(produto);
             await _context.SaveChangesAsync();
 
