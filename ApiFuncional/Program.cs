@@ -1,3 +1,16 @@
+using System.ComponentModel;
+using System.Text;
+using ApiFuncional.Data;
+using ApiFuncional.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+
+//aplica convention de api para toda a aplicação
+//[assembly: ApiConventionType(typeof(DefaultApiConventions))]
 using ApiFuncional.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -11,6 +11,9 @@ namespace ApiFuncional.Controllers
     [Authorize]
     [ApiController]
     [Route("api/produtos")]
+
+    //Convenção padrão API para toda a controller
+    //[ApiConventionType(typeof(DefaultApiConventions))]
     public class ProdutosController : ControllerBase
     {
         private readonly ApiDbContext _context;
@@ -48,9 +51,13 @@ namespace ApiFuncional.Controllers
         }
 
         [HttpPost]
+        //Analyzers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
+
+        //API Convenção Http
+        //[ApiConventionMethod(typeof(DefaultApiConventions), nameof(DefaultApiConventions.Put))]
         public async Task<ActionResult<Produto>> PostProduto(Produto produto)
         {
             if (_context.Produtos == null) return Problem("Erro ao criar um produto, contate o suporte!");
