@@ -25,3 +25,9 @@
         - Signature: senha de assinatura do token(segredo).
 
                 * dotnet add package Microsoft.AspNetCore Authentication.JwtBearer               
+
+
+**Response Types**
+- Ajuda a documentar os tipos de retorno do endpoint. Caso passado somente o codigo do retorno a documentação expõe o tipo padrão do dotnet ou podemos também deifinir tipo especificos.
+- Diferença entre ActionResult x IActionResult
+https://learn.microsoft.com/pt-br/aspnet/core/web-api/action-return-types?view=aspnetcore-9.0#actionresult-vs-iactionresult
